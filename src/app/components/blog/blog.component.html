@@ -1,0 +1,29 @@
+<section class="formulario-container">
+    <h2>Nueva Publicación</h2>
+    <div class="form-group">
+        <input type="text" [(ngModel)]="nuevaNoticia.titulo" placeholder="Título">
+        <input type="text" [(ngModel)]="nuevaNoticia.imagen" placeholder="URL de la Imagen">
+        <textarea [(ngModel)]="nuevaNoticia.texto" placeholder="Contenido de la noticia"></textarea>
+        <input type="date" [(ngModel)]="nuevaNoticia.fecha">
+
+        <button (click)="guardarNoticia()">Publicar noticia</button>
+    </div>
+</section>
+
+<hr>
+
+<section class="listado-container">
+    <h2>Blog de Noticias de World of Warcraft</h2>
+    <div class="grid-noticias">
+        @for (item of noticias; track $index) {
+        <article class="card">
+            <img [src]="item.imagen" [alt]="item.titulo">
+            <h3>{{ item.titulo }}</h3>
+            <small>{{ item.fecha }}</small>
+            <p>{{ item.texto }}</p>
+        </article>
+        } @empty {
+        <p>No hay publicaciones disponibles.</p>
+        }
+    </div>
+</section>
